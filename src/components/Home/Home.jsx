@@ -1,9 +1,12 @@
 import React from 'react';
+import styles from './Home.scss';
+// Header
+import Header from '../Header/Header';
 
 const Home = (props) => {
   return (
-    <div className="Home">
-      <h4>Hello</h4>
+    <div className={styles.Home}>
+      <Header></Header>
     </div>
   );
 }
