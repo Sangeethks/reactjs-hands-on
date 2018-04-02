@@ -21,7 +21,7 @@ class Hamburger extends Component {
 
     console.log('[Hamburger -> builderInputOnchangeCB -> ingredients]', ingredients);
 
-    this.setState(ingredients[type] = event.target.value)
+    // this.setState(ingredients[type] = event.target.value)
   }
 
   render () {
