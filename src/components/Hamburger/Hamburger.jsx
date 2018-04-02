@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import style from './Hamburger.scss';
 import Screen from './Screen/Screen';
+import Builder from './Builder/Builder';
 
 class Hamburger extends Component {
   constructor() {
@@ -10,7 +11,7 @@ class Hamburger extends Component {
       ingredients: {
         'top': 1,
         'cheese': 2,
-        'slice': 2,
+        'slice': 3,
         'tomottow': 1,
         'bottom': 1,
       }
@@ -21,6 +22,8 @@ class Hamburger extends Component {
     return (
       <div className={style.Hamburger}>
         <Screen ingredients={this.state.ingredients}></Screen>
+        <Builder></Builder>
+        <div className="clearfix"></div>
       </div>
     );
   }
