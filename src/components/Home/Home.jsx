@@ -1,4 +1,5 @@
 import React from 'react';
+// SASS
 import styles from './Home.scss';
 // Header
 import Header from '../Header/Header';

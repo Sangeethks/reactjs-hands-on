@@ -14,6 +14,7 @@ const Header = (props) => {
             <li><a href="/home">Contact</a></li>
           </ul>
         </div>
+        <div className="clearfix"></div>
       </div>
     </div>
   );

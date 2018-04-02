@@ -1,12 +1,31 @@
 .Header {
   font-family: inherit;
-}
-.Nav {
-  font-family: inherit;
+  .Nav {
+    padding: 20px;
+    border: 1px solid #999;
+  }
 }
 .NavLeft {
-  font-family: inherit;
+    float: left;
+    h4 {
+      font-weight: 300;
+      color: #999;
+      span {
+        font-weight: 600;
+      }
+    }
 }
 .NavRight {
-  font-family: inherit;
+    float: right;
+    ul {
+      li {
+        display: inline-block;
+        a {
+          display: block;
+          padding: 0 10px;
+          color: #999;
+          text-decoration: none;
+        }
+      }
+    }
 }
