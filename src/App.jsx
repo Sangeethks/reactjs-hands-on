@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import styles from './App.scss';
 
 class App extends Component {
-
+  state = {
+    
+  }
 
   render() {
     return (
