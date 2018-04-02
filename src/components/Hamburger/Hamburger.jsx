@@ -9,20 +9,29 @@ class Hamburger extends Component {
 
     this.state = {
       ingredients: {
-        'top': 1,
-        'cheese': 2,
-        'slice': 3,
+        'cheese': 1,
+        'slice': 1,
         'tomottow': 1,
-        'bottom': 1,
       }
     }
+  }
+
+  builderInputOnchangeCB = (type, event) => {
+    let ingredients = this.state.ingredients;
+
+    console.log('[Hamburger -> builderInputOnchangeCB -> ingredients]', ingredients);
+
+    this.setState(ingredients[type] = event.target.value)
   }
 
   render () {
     return (
       <div className={style.Hamburger}>
         <Screen ingredients={this.state.ingredients}></Screen>
-        <Builder></Builder>
+        <Builder
+          ingredients={this.state.ingredients}
+          builderInputOnchangeEvent={this.builderInputOnchangeCB}>
+        </Builder>
         <div className="clearfix"></div>
       </div>
     );

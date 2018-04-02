@@ -11,12 +11,12 @@ const Screen = (props) => {
     });
   });
 
-  console.log('[Screen -> burger]', burger);
-
   return (
     <div className={style.Screen}>
       <div className="BurgerScreen">
+        <Ingredient type="top"></Ingredient>
         {burger}
+        <Ingredient type="bottom"></Ingredient>
       </div>
     </div>
   );

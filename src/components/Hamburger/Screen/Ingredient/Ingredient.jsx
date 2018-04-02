@@ -2,8 +2,6 @@ import React from 'react';
 import style from './Ingredient.scss';
 
 const Ingredient = (props) => {
-  console.log(props.type);
-
   let ingredient = null;
   switch (props.type) {
     case ('top'):
