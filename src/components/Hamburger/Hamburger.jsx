@@ -17,11 +17,12 @@ class Hamburger extends Component {
   }
 
   builderInputOnchangeCB = (type, event) => {
-    let ingredients = this.state.ingredients;
+    let ingredients = {...this.state.ingredients};
+    ingredients[type] = event.target.value;
 
     console.log('[Hamburger -> builderInputOnchangeCB -> ingredients]', ingredients);
 
-    // this.setState(ingredients[type] = event.target.value)
+    this.setState({ ingredients });
   }
 
   render () {
