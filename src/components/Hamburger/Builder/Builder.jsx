@@ -11,8 +11,8 @@ const Builder = (props) => {
     return {
       name: key.slice(0, 1).toUpperCase() + key.slice(1),
       type: key,
-      lessDisabled: isLessButtonDisabled(props.ingredients[key]),
-      moreDisabled: isMoreButtonDisabled(props.ingredients[key]),
+      lessDisabled: isLessButtonDisabled(props.ingredients[key].count),
+      moreDisabled: isMoreButtonDisabled(props.ingredients[key].count),
     }
   });
 
@@ -44,7 +44,10 @@ const Builder = (props) => {
 
         {controls}
 
-        <button className={style.BtnCheckout}>CHECKOUT</button>
+        <div className="BuilderCheckout">
+          <h4 className="TotalPrice">Sub Total : ${props.total}</h4>
+          <button className={style.BtnCheckout}>CHECKOUT</button>
+        </div>
       </div>
     </div>
   );

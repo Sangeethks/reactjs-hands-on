@@ -16,7 +16,6 @@
 }
 .BtnCheckout {
   -webkit-appearance: none;
-  display: block;
   padding: 20px 40px;
   border: 0;
   background-color: burlywood;
@@ -42,4 +41,8 @@
     width: 25%;
     padding: 12px;
   }
+}
+.BuilderCheckout {
+  text-align: center;
+  margin: 40px 0;
 }

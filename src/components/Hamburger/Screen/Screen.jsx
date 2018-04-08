@@ -4,7 +4,7 @@ import Ingredient from './Ingredient/Ingredient';
 
 const Screen = (props) => {
   let burger = Object.keys(props.ingredients).map((iKey) => {
-    let arr = [...Array(props.ingredients[iKey])];
+    let arr = [...Array(props.ingredients[iKey].count)];
     return arr.map((_, i) => {
       return <Ingredient type={iKey} key={iKey + i}></Ingredient>
     });
