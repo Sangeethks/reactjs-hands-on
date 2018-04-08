@@ -9,20 +9,42 @@ class Hamburger extends Component {
 
     this.state = {
       ingredients: {
-        'cheese': 1,
-        'slice': 1,
-        'tomottow': 1,
+        'cheese': 0,
+        'slice': 0,
+        'tomottow': 0,
       }
     }
   }
 
   builderInputOnchangeCB = (type, event) => {
+
+  }
+
+  buildCtrlLessCB = (type) => {
     let ingredients = {...this.state.ingredients};
-    ingredients[type] = event.target.value;
+    if (type in ingredients) {
+      ingredients[type] -= 1;
 
-    console.log('[Hamburger -> builderInputOnchangeCB -> ingredients]', ingredients);
+      this.setState({ ingredients });
+    }
+  }
 
-    this.setState({ ingredients });
+  buildCtrlMoreCB = (type) => {
+    let ingredients = {...this.state.ingredients};
+    if (type in ingredients) {
+      ingredients[type] += 1;
+
+      this.setState({ ingredients });
+    }
+  }
+
+  isLessButtonDisabledCB = (type) => {
+    return false;
+  }
+
+  isMoreButtonDisabledCB = (type) => {
+    console.log('[Hamburger -> isMoreButtonDisabledCB -> type ]', type);
+    return 'false';
   }
 
   render () {
@@ -31,7 +53,11 @@ class Hamburger extends Component {
         <Screen ingredients={this.state.ingredients}></Screen>
         <Builder
           ingredients={this.state.ingredients}
-          builderInputOnchangeEvent={this.builderInputOnchangeCB}>
+          builderInputOnchangeEvent={this.builderInputOnchangeCB}
+          buildCtrlLessEvent={this.buildCtrlLessCB}
+          buildCtrlMoreEvent={this.buildCtrlMoreCB}
+          isLessButtonDisabled={this.isLessButtonDisabledCB}
+          isMoreButtonDisabled={this.isMoreButtonDisabledCB}>
         </Builder>
         <div className="clearfix"></div>
       </div>
