@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import style from './Hamburger.scss';
 import Screen from './Screen/Screen';
 import Builder from './Builder/Builder';
+import Modal from '../Shared/Modal';
+import Checkout from './Checkout/Checkout';
 
 class Hamburger extends Component {
   constructor() {
@@ -23,7 +25,8 @@ class Hamburger extends Component {
         },
       }, // ingredients
       basePrice: 4.00,
-      totalPrice: 0.00
+      totalPrice: 0.00,
+      showCheckoutModal: false
     }
   }
 
@@ -49,6 +52,14 @@ class Hamburger extends Component {
     }
   }
 
+  buttonCheckoutClickCB = () => {
+    this.setState({ showCheckoutModal: true });
+  }
+
+  overlayClickCB = () => {
+    this.setState({ showCheckoutModal: false });
+  }
+
   render () {
     // Calculate TotalPrice
     let ingredients = {...this.state.ingredients};
@@ -61,14 +72,30 @@ class Hamburger extends Component {
 
     let totalPrice = (this.state.basePrice + currentPrice).toFixed(2);
 
+    // Whether to show the checkout modal or not
+    let checkoutModal = null;
+    if (this.state.showCheckoutModal) {
+      checkoutModal = (
+        <Modal overlayClickEvent={this.overlayClickCB}>
+          <Checkout
+            ingredients={this.state.ingredients}
+            totalPrice={totalPrice}>
+          </Checkout>
+        </Modal>
+      );
+    }
+
     return (
       <div className={style.Hamburger}>
+        { checkoutModal }
+
         <Screen ingredients={this.state.ingredients}></Screen>
         <Builder
           total={totalPrice}
           ingredients={this.state.ingredients}
           buildCtrlLessEvent={this.buildCtrlLessCB}
-          buildCtrlMoreEvent={this.buildCtrlMoreCB}>
+          buildCtrlMoreEvent={this.buildCtrlMoreCB}
+          buttonCheckoutClickEvent={this.buttonCheckoutClickCB}>
         </Builder>
         <div className="clearfix"></div>
       </div>

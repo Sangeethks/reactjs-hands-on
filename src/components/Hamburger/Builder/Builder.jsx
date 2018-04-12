@@ -46,7 +46,7 @@ const Builder = (props) => {
 
         <div className="BuilderCheckout">
           <h4 className="TotalPrice">Sub Total : ${props.total}</h4>
-          <button className={style.BtnCheckout}>CHECKOUT</button>
+          <button className={style.BtnCheckout} onClick={props.buttonCheckoutClickEvent}>CHECKOUT</button>
         </div>
       </div>
     </div>
