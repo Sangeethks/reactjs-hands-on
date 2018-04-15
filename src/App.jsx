@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styles from './App.scss';
-import Home from './components/Home/Home';
+import Counter from './components/Counter/Counter';
 
 class App extends Component {
   state = {
@@ -10,7 +10,7 @@ class App extends Component {
   render() {
     return (
       <div className={styles.App}>
-        <Home></Home>
+        <Counter></Counter>
       </div>
     )
   } // render

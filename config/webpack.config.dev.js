@@ -202,7 +202,7 @@ module.exports = {
                     modules: true,
                     sourceMap: true,
                     importLoaders: 2,
-                    localIdentName: '[local]'
+                    localIdentName: '[name]__[local]__[hash:base64:5]'
                   }
                 },
                 'sass-loader'
