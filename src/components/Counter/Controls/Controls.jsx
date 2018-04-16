@@ -5,10 +5,26 @@ const Controls = (props) => {
   return (
     <div className={styles.Controls}>
       <div className="BtnControls">
-        <button className={styles.CtrlBtn}>Add</button>
-        <button className={styles.CtrlBtn}>Minus</button>
-        <button className={styles.CtrlBtn}>Add 5</button>
-        <button className={styles.CtrlBtn}>Minus 5</button>
+        <button
+          className={styles.CtrlBtn}
+          onClick={props.incrementBtnClickEvent} >
+          Increment
+        </button>
+        <button
+          className={styles.CtrlBtn}
+          onClick={props.decrementBtnClickEvent} >
+          Decrement
+        </button>
+        <button
+          className={styles.CtrlBtn}
+          onClick={props.addBtnClickEvent} >
+          Add {props.addValue}
+        </button>
+        <button
+          className={styles.CtrlBtn}
+          onClick={props.minusBtnClickEvent} >
+          Minus {props.minusValue}
+        </button>
       </div>
     </div>
   )
