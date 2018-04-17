@@ -1,7 +1,8 @@
 const initialState = {
   counter: 0,
   addValue: 10,
-  minusValue: 8
+  minusValue: 8,
+  savedResults: []
 }
 
 // Initializing reducer with initial state
@@ -34,6 +35,12 @@ const reducer = (state = initialState, action) => {
     return {
       ...state,
       counter: state.counter - state.minusValue
+    }
+
+    case 'SAVE_RESULTS':
+    return {
+      ...state,
+      savedResults: state.savedResults.concat(state.counter)
     }
 
     default:

@@ -5,40 +5,17 @@ import Controls from './Controls/Controls'
 import { connect } from 'react-redux'
 
 class Counter extends Component {
-  constructor() {
-    super ()
-    this.state = {
-      count: 0,
-      addValue: 5,
-      minusValue: 6
-    }
-  }
-
-  incrementBtnClickCB = () => {
-    // console.log('[Counter -> incrementBtnClickCB]');
-    this.setState({ count: this.state.count + 1 })
-  }
-
-  decrementBtnClickCB = () => {
-    // console.log('[Counter -> incrementBtnClickCB]');
-    this.setState({ count: this.state.count - 1 })
-  }
-
-  addBtnClickCB = () => {
-    // console.log('[Counter -> incrementBtnClickCB -> count]', this.state.count);
-    // console.log('[Counter -> incrementBtnClickCB -> addValue]', this.state.addValue);
-
-    this.setState({ count: this.state.count + this.state.addValue })
-  }
-
-  minusBtnClickCB = () => {
-    // console.log('[Counter -> incrementBtnClickCB -> count]', this.state.count);
-    // console.log('[Counter -> incrementBtnClickCB -> count]', this.state.count);
-
-    this.setState({ count: this.state.count - this.state.minusValue })
-  }
 
   render () {
+    let savedResults = null;
+    if (this.props.savedResults && this.props.savedResults.length) {
+      savedResults = this.props.savedResults.map((result, i) => {
+        return (
+          <li key={i}>{result}</li>
+        )
+      })
+    }
+
     return (
       <div>
         <Screen
@@ -51,7 +28,16 @@ class Counter extends Component {
           minusBtnClickEvent={this.props.onMinusCounter}
           addValue={this.props.addValue}
           minusValue={this.props.minusValue}
+          saveResults={this.props.onSaveResults}
           />
+
+        <button onClick={this.props.onSaveResults}>Save Result</button>
+
+        <div className="savedResults">
+          <ul>
+            { savedResults }
+          </ul>
+        </div>
       </div>
     )
   }
@@ -62,7 +48,8 @@ const mapStateToProps = state => {
   return {
     counter: state.counter,
     addValue: state.addValue,
-    minusValue: state.minusValue
+    minusValue: state.minusValue,
+    savedResults: state.savedResults
   }
 }
 
@@ -72,7 +59,8 @@ const mapDispathToActions = dispatch => {
     onIncrementCounter: () => dispatch({ type: 'INCREMENT' }),
     onDecrementCounter: () => dispatch({ type: 'DECREMENT' }),
     onAddCounter: () => dispatch({ type: 'ADD_COUNTER' }),
-    onMinusCounter: () => dispatch({ type: 'MINUS_COUNTER' })
+    onMinusCounter: () => dispatch({ type: 'MINUS_COUNTER' }),
+    onSaveResults: () => dispatch({ type: 'SAVE_RESULTS' })
   }
 }
 
