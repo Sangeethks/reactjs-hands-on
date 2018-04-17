@@ -43,22 +43,31 @@ class Counter extends Component {
       <div>
         <Screen count={this.props.counter}></Screen>
         <Controls
-          incrementBtnClickEvent={this.incrementBtnClickCB}
-          decrementBtnClickEvent={this.decrementBtnClickCB}
-          addBtnClickEvent={this.addBtnClickCB}
-          minusBtnClickEvent={this.minusBtnClickCB}
-          addValue={this.state.addValue}
-          minusValue={this.state.minusValue}>
-        </Controls>
+          incrementBtnClickEvent={this.props.onIncrementCounter}
+          decrementBtnClickEvent={this.props.onDecrementCounter}
+          addBtnClickEvent={this.props.onAddCounter}
+          minusBtnClickEvent={this.props.onMinusCounter}
+          />
       </div>
     )
   }
 }
 
+// Subscription
 const mapStateToProps = state => {
   return {
     counter: state.counter
   }
 }
 
-export default connect(mapStateToProps)(Counter)
+// Actions
+const mapDispathToActions = dispatch => {
+  return {
+    onIncrementCounter: () => dispatch({ type: 'INCREMENT' }),
+    onDecrementCounter: () => dispatch({ type: 'DECREMENT' }),
+    onAddCounter: () => dispatch({ type: 'ADD_COUNTER' }),
+    onMinusCounter: () => dispatch({ type: 'MINUS_COUNTER' })
+  }
+}
+
+export default connect(mapStateToProps, mapDispathToActions)(Counter)
