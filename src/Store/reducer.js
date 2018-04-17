@@ -17,28 +17,24 @@ const reducer = (state = initialState, action) => {
       ...state,
       counter: state.counter + 1
     }
-    break;
 
     case 'DECREMENT':
     return {
       ...state,
       counter: state.counter - 1
     }
-    break;
 
     case 'ADD_COUNTER':
     return {
       ...state,
       counter: state.counter + state.addValue
     }
-    break;
 
     case 'MINUS_COUNTER':
     return {
       ...state,
       counter: state.counter - state.minusValue
     }
-    break;
 
     default:
 

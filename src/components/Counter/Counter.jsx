@@ -41,12 +41,16 @@ class Counter extends Component {
   render () {
     return (
       <div>
-        <Screen count={this.props.counter}></Screen>
+        <Screen
+          count={this.props.counter}
+          />
         <Controls
           incrementBtnClickEvent={this.props.onIncrementCounter}
           decrementBtnClickEvent={this.props.onDecrementCounter}
           addBtnClickEvent={this.props.onAddCounter}
           minusBtnClickEvent={this.props.onMinusCounter}
+          addValue={this.props.addValue}
+          minusValue={this.props.minusValue}
           />
       </div>
     )
@@ -56,7 +60,9 @@ class Counter extends Component {
 // Subscription
 const mapStateToProps = state => {
   return {
-    counter: state.counter
+    counter: state.counter,
+    addValue: state.addValue,
+    minusValue: state.minusValue
   }
 }
 
