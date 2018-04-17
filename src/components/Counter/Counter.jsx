@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Screen from './Screen/Screen'
 import Controls from './Controls/Controls'
+// Connecting component with redux
+import { connect } from 'react-redux'
 
 class Counter extends Component {
   constructor() {
@@ -39,7 +41,7 @@ class Counter extends Component {
   render () {
     return (
       <div>
-        <Screen count={this.state.count}></Screen>
+        <Screen count={this.props.counter}></Screen>
         <Controls
           incrementBtnClickEvent={this.incrementBtnClickCB}
           decrementBtnClickEvent={this.decrementBtnClickCB}
@@ -53,4 +55,10 @@ class Counter extends Component {
   }
 }
 
-export default Counter
+const mapStateToProps = state => {
+  return {
+    counter: state.counter
+  }
+}
+
+export default connect(mapStateToProps)(Counter)

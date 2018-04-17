@@ -4,7 +4,7 @@ const initialState = {
 
 // Initializing reducer with initial state
 const reducer = (state = initialState, action) => {
-
+  return state;
 }
 
 export default reducer;
