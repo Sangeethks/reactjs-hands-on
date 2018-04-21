@@ -1,3 +1,5 @@
+import ActionTypes from './ActionTypes'
+
 const initialState = {
   counter: 0,
   addValue: 10,
@@ -13,31 +15,31 @@ const reducer = (state = initialState, action) => {
 
   // Mapping Actions
   switch (action.type) {
-    case 'INCREMENT':
+    case ActionTypes.INCREMENT:
     return {
       ...state,
       counter: state.counter + 1
     }
 
-    case 'DECREMENT':
+    case ActionTypes.DECREMENT:
     return {
       ...state,
       counter: state.counter - 1
     }
 
-    case 'ADD_COUNTER':
+    case ActionTypes.ADD_COUNTER:
     return {
       ...state,
       counter: state.counter + state.addValue
     }
 
-    case 'MINUS_COUNTER':
+    case ActionTypes.MINUS_COUNTER:
     return {
       ...state,
       counter: state.counter - state.minusValue
     }
 
-    case 'SAVE_RESULTS': {
+    case ActionTypes.SAVE_RESULTS: {
       let savedResults = [...state.savedResults]
 
       if (state.counter !== 0) {
@@ -50,7 +52,7 @@ const reducer = (state = initialState, action) => {
       }
     }
 
-    case 'DELETE_RESULTS': {
+    case ActionTypes.DELETE_RESULTS: {
       let savedResults = [...state.savedResults]
 
       // console.log('[reducer -> DELETE_RESULTS -> index ]', action.index);
