@@ -5,13 +5,15 @@ import Controls from './Controls/Controls'
 import { connect } from 'react-redux'
 
 class Counter extends Component {
-
   render () {
     let savedResults = null;
+
+    console.log('[counter -> savedResults ]', this.props.savedResults);
+
     if (this.props.savedResults && this.props.savedResults.length) {
       savedResults = this.props.savedResults.map((result, i) => {
         return (
-          <li key={i}>{result}</li>
+          <li key={i}>{result.value}</li>
         )
       })
     }

@@ -38,9 +38,15 @@ const reducer = (state = initialState, action) => {
     }
 
     case 'SAVE_RESULTS':
+    let savedResults = state.savedResults
+
+    if (state.counter !== 0) {
+      savedResults = state.savedResults.concat({ value: state.counter })
+    }
+
     return {
       ...state,
-      savedResults: state.savedResults.concat(state.counter)
+      savedResults
     }
 
     default:

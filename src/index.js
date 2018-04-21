@@ -12,7 +12,7 @@ import { Provider } from 'react-redux';
 // Defining reducer to initialize the store
 import reducer from './Store/reducer';
 // Creating the Store
-const Store = createStore(reducer);
+const store = createStore(reducer);
 
-ReactDOM.render(<Provider store={Store}><App /></Provider>, document.getElementById('root'));
+ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
 // registerServiceWorker();
