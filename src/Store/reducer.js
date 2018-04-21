@@ -2,7 +2,7 @@ import ActionTypes from '@/Store/ActionTypes'
 
 const initialState = {
   counter: 0,
-  addValue: 10,
+  addValue: 20,
   minusValue: 8,
   savedResults: []
 }

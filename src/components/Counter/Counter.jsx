@@ -32,8 +32,6 @@ class Counter extends Component {
           decrementBtnClickEvent={this.props.onDecrementCounter}
           addBtnClickEvent={this.props.onAddCounter}
           minusBtnClickEvent={this.props.onMinusCounter}
-          addValue={this.props.addValue}
-          minusValue={this.props.minusValue}
           saveResults={this.props.onSaveResults}
           />
 
@@ -53,8 +51,6 @@ class Counter extends Component {
 const mapStateToProps = state => {
   return {
     counter: state.counter,
-    addValue: state.addValue,
-    minusValue: state.minusValue,
     savedResults: state.savedResults
   }
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './Controls.scss'
+import { connect } from 'react-redux'
 
 const Controls = (props) => {
   return (
@@ -30,4 +31,11 @@ const Controls = (props) => {
   )
 }
 
-export default Controls
+const mapStateToProps = state => {
+  return {
+    addValue: state.addValue,
+    minusValue: state.minusValue,
+  }
+}
+
+export default connect(mapStateToProps)(Controls)
