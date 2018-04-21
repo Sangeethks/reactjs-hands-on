@@ -33,8 +33,8 @@ const Controls = (props) => {
 
 const mapStateToProps = state => {
   return {
-    addValue: state.addValue,
-    minusValue: state.minusValue,
+    addValue: state.counter.addValue,
+    minusValue: state.counter.minusValue,
   }
 }
 

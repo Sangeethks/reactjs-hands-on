@@ -12,7 +12,7 @@ class Counter extends Component {
   render () {
     let savedResults = null;
 
-    // console.log('[counter -> savedResults ]', this.props.savedResults);
+    console.log('[counter -> savedResults ]', this.props.savedResults);
 
     if (this.props.savedResults && this.props.savedResults.length) {
       savedResults = this.props.savedResults.map((result, i) => {
@@ -35,7 +35,7 @@ class Counter extends Component {
           saveResults={this.props.onSaveResults}
           />
 
-        <button onClick={this.props.onSaveResults}>Save Result</button>
+        <button onClick={() => this.props.onSaveResults(this.props.counter)}>Save Result</button>
 
         <div className={styles.SavedResults}>
           <ul>
@@ -50,8 +50,8 @@ class Counter extends Component {
 // Subscription
 const mapStateToProps = state => {
   return {
-    counter: state.counter,
-    savedResults: state.savedResults
+    counter: state.counter.counter,
+    savedResults: state.results.savedResults
   }
 }
 
@@ -62,7 +62,7 @@ const mapDispathToActions = dispatch => {
     onDecrementCounter: () => dispatch({ type: ActionTypes.DECREMENT }),
     onAddCounter: () => dispatch({ type: ActionTypes.ADD_COUNTER }),
     onMinusCounter: () => dispatch({ type: ActionTypes.MINUS_COUNTER }),
-    onSaveResults: () => dispatch({ type: ActionTypes.SAVE_RESULTS }),
+    onSaveResults: (result) => dispatch({ type: ActionTypes.SAVE_RESULTS, result }),
     onDeleteResults: (index) => dispatch({ type: ActionTypes.DELETE_RESULTS, index })
   }
 }

@@ -1,37 +1,25 @@
 import ActionTypes from '@/Store/ActionTypes'
 
 const initialState = {
-  counter: 0,
-  addValue: 20,
-  minusValue: 8,
+  savedResults: []
 }
 
 // Initializing reducer with initial state
 const reducer = (state = initialState, action) => {
   // Mapping Actions
   switch (action.type) {
-    case ActionTypes.INCREMENT:
-    return {
-      ...state,
-      counter: state.counter + 1
+    case ActionTypes.SAVE_RESULTS: {
+      let savedResults = [...state.savedResults]
+      if (state.counter !== 0) {
+        savedResults = state.savedResults.concat({ value: action.result })
+      }
+      return { ...state, savedResults }
     }
 
-    case ActionTypes.DECREMENT:
-    return {
-      ...state,
-      counter: state.counter - 1
-    }
-
-    case ActionTypes.ADD_COUNTER:
-    return {
-      ...state,
-      counter: state.counter + state.addValue
-    }
-
-    case ActionTypes.MINUS_COUNTER:
-    return {
-      ...state,
-      counter: state.counter - state.minusValue
+    case ActionTypes.DELETE_RESULTS: {
+      let savedResults = [...state.savedResults]
+      savedResults.splice(action.index, 1)
+      return { ...state, savedResults }
     }
   }
 
