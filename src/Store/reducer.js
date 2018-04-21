@@ -37,16 +37,30 @@ const reducer = (state = initialState, action) => {
       counter: state.counter - state.minusValue
     }
 
-    case 'SAVE_RESULTS':
-    let savedResults = state.savedResults
+    case 'SAVE_RESULTS': {
+      let savedResults = [...state.savedResults]
 
-    if (state.counter !== 0) {
-      savedResults = state.savedResults.concat({ value: state.counter })
+      if (state.counter !== 0) {
+        savedResults = state.savedResults.concat({ value: state.counter })
+      }
+
+      return {
+        ...state,
+        savedResults
+      }
     }
 
-    return {
-      ...state,
-      savedResults
+    case 'DELETE_RESULTS': {
+      let savedResults = [...state.savedResults]
+
+      // console.log('[reducer -> DELETE_RESULTS -> index ]', action.index);
+
+      savedResults.splice(action.index, 1)
+
+      return {
+        ...state,
+        savedResults
+      }
     }
 
     default:

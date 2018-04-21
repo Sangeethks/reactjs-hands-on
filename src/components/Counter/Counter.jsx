@@ -3,17 +3,19 @@ import Screen from './Screen/Screen'
 import Controls from './Controls/Controls'
 // Connecting component with redux
 import { connect } from 'react-redux'
+// Importing styles
+import styles from './Counter.scss'
 
 class Counter extends Component {
   render () {
     let savedResults = null;
 
-    console.log('[counter -> savedResults ]', this.props.savedResults);
+    // console.log('[counter -> savedResults ]', this.props.savedResults);
 
     if (this.props.savedResults && this.props.savedResults.length) {
       savedResults = this.props.savedResults.map((result, i) => {
         return (
-          <li key={i}>{result.value}</li>
+          <li key={i} onClick={() => this.props.onDeleteResults(i)}>{result.value}</li>
         )
       })
     }
@@ -35,7 +37,7 @@ class Counter extends Component {
 
         <button onClick={this.props.onSaveResults}>Save Result</button>
 
-        <div className="savedResults">
+        <div className={styles.SavedResults}>
           <ul>
             { savedResults }
           </ul>
@@ -62,7 +64,8 @@ const mapDispathToActions = dispatch => {
     onDecrementCounter: () => dispatch({ type: 'DECREMENT' }),
     onAddCounter: () => dispatch({ type: 'ADD_COUNTER' }),
     onMinusCounter: () => dispatch({ type: 'MINUS_COUNTER' }),
-    onSaveResults: () => dispatch({ type: 'SAVE_RESULTS' })
+    onSaveResults: () => dispatch({ type: 'SAVE_RESULTS' }),
+    onDeleteResults: (index) => dispatch({ type: 'DELETE_RESULTS', index })
   }
 }
 
