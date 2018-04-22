@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './App';
 // To create redux store
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 // To connect react to redux
 import { Provider } from 'react-redux';
 
@@ -17,8 +17,20 @@ let Reducer = combineReducers({
   results: ResultsReducer
 })
 
+const logger = store => {
+  return next => {
+    return action => {
+      console.log('[Middleware] action', action);
+
+      console.log('[Middleware] next state', store.getState());
+
+      return next(action)
+    }
+  }
+}
+
 // Creating the Store
-const store = createStore(Reducer);
+const store = createStore(Reducer, applyMiddleware(logger));
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
 // registerServiceWorker();
