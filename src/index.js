@@ -19,22 +19,10 @@ let Reducer = combineReducers({
   results: ResultsReducer
 })
 
-const logger = store => {
-  return next => {
-    return action => {
-      console.log('[Middleware] dispatching', action);
-
-      console.log('[Middleware] next state', store.getState());
-
-      return next(action)
-    }
-  }
-}
-
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 // Creating the Store
-const store = createStore(Reducer, composeEnhancers(applyMiddleware(logger, thunk)));
+const store = createStore(Reducer, composeEnhancers(applyMiddleware(thunk)));
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
 // registerServiceWorker();
