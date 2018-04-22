@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 // Importing styles
 import styles from './Counter.scss'
 // ActionTypes
-import ActionTypes from '@/Store/ActionTypes'
+import Actions from '@/Store/Actions/Actions'
 
 class Counter extends Component {
   render () {
@@ -58,12 +58,12 @@ const mapStateToProps = state => {
 // Actions
 const mapDispathToActions = dispatch => {
   return {
-    onIncrementCounter: () => dispatch({ type: ActionTypes.INCREMENT }),
-    onDecrementCounter: () => dispatch({ type: ActionTypes.DECREMENT }),
-    onAddCounter: () => dispatch({ type: ActionTypes.ADD_COUNTER }),
-    onMinusCounter: () => dispatch({ type: ActionTypes.MINUS_COUNTER }),
-    onSaveResults: (result) => dispatch({ type: ActionTypes.SAVE_RESULTS, result }),
-    onDeleteResults: (index) => dispatch({ type: ActionTypes.DELETE_RESULTS, index })
+    onIncrementCounter: () => dispatch(Actions.increment()),
+    onDecrementCounter: () => dispatch(Actions.decrement()),
+    onAddCounter: () => dispatch(Actions.add_counter()),
+    onMinusCounter: () => dispatch(Actions.minus_counter()),
+    onSaveResults: (result) => dispatch(Actions.save_results(result)),
+    onDeleteResults: (index) => dispatch(Actions.delete_results(index))
   }
 }
 

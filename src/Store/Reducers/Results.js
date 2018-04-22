@@ -1,4 +1,4 @@
-import ActionTypes from '@/Store/ActionTypes'
+import Actions from '@/Store/Actions/Actions'
 
 const initialState = {
   savedResults: []
@@ -8,7 +8,7 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   // Mapping Actions
   switch (action.type) {
-    case ActionTypes.SAVE_RESULTS: {
+    case Actions.SAVE_RESULTS: {
       let savedResults = [...state.savedResults]
       if (state.counter !== 0) {
         savedResults = state.savedResults.concat({ value: action.result })
@@ -16,14 +16,16 @@ const reducer = (state = initialState, action) => {
       return { ...state, savedResults }
     }
 
-    case ActionTypes.DELETE_RESULTS: {
+    case Actions.DELETE_RESULTS: {
       let savedResults = [...state.savedResults]
       savedResults.splice(action.index, 1)
       return { ...state, savedResults }
     }
+
+    default:
+      return state;
   }
 
-  return state;
 }
 
 export default reducer;

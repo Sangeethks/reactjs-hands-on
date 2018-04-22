@@ -1,4 +1,4 @@
-import ActionTypes from '@/Store/ActionTypes'
+import Actions from '@/Store/Actions/Actions'
 
 const initialState = {
   counter: 0,
@@ -10,32 +10,34 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   // Mapping Actions
   switch (action.type) {
-    case ActionTypes.INCREMENT:
+    case Actions.INCREMENT:
     return {
       ...state,
       counter: state.counter + 1
     }
 
-    case ActionTypes.DECREMENT:
+    case Actions.DECREMENT:
     return {
       ...state,
       counter: state.counter - 1
     }
 
-    case ActionTypes.ADD_COUNTER:
+    case Actions.ADD_COUNTER:
     return {
       ...state,
       counter: state.counter + state.addValue
     }
 
-    case ActionTypes.MINUS_COUNTER:
+    case Actions.MINUS_COUNTER:
     return {
       ...state,
       counter: state.counter - state.minusValue
     }
+
+    default:
+      return state;
   }
 
-  return state;
 }
 
 export default reducer;

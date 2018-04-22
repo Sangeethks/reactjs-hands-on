@@ -6,6 +6,8 @@ import App from './App';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 // To connect react to redux
 import { Provider } from 'react-redux';
+// For asynchronous action dispatch
+import thunk from 'redux-thunk';
 
 // import registerServiceWorker from './registerServiceWorker';
 
@@ -32,7 +34,7 @@ const logger = store => {
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 // Creating the Store
-const store = createStore(Reducer, composeEnhancers(applyMiddleware(logger)));
+const store = createStore(Reducer, composeEnhancers(applyMiddleware(logger, thunk)));
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
 // registerServiceWorker();
