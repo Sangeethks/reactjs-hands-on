@@ -5,24 +5,24 @@ export default {
   MINUS_COUNTER: 'MINUS_COUNTER',
   SAVE_RESULTS: 'SAVE_RESULTS',
   DELETE_RESULTS: 'DELETE_RESULTS',
-  increment: function () {
+  increment () {
     console.log('[Actions] increment this', this);
 
     return { type: this.INCREMENT }
   },
-  decrement: function () {
+  decrement () {
     return { type: this.DECREMENT }
   },
-  add_counter: function () {
+  add_counter () {
     return { type: this.ADD_COUNTER }
   },
-  minus_counter: function () {
+  minus_counter () {
     return { type: this.MINUS_COUNTER }
   },
-  save_results: function (result) {
+  save_results (result) {
     return { type: this.SAVE_RESULTS, result }
   },
-  delete_results: function (index) {
+  delete_results (index) {
     return { type: this.DELETE_RESULTS, index }
   }
 }
